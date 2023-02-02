@@ -16,7 +16,7 @@ def create_app():
     from .api import api_bp
     app.register_blueprint(api_bp, url_prefix="/")
 
-    app.run(port=5000, debug=False)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
 def register_extensions(app):
     ma.init_app(app)
