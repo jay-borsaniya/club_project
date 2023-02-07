@@ -17,19 +17,19 @@ admin = Namespace("user", description="Admin CRUD Operations.")
 class Admin(Resource):
     @admin.doc(params={'id': {'description': 'id', 'in': 'query', 'type': 'string'}})
     def get(self):
-        result = {
-            "status":200
-        }
-        return jsonify(result)
-        # resp = auth.token_required(request.headers.get("Authorization"))
-        # if resp["status"] != 200:
-        #     return err_resp(
-        #         resp["msg"],
-        #         resp["msg"],
-        #         resp["status"]
-        #     )
-        # id = request.args.get("id")
-        # return AdminService.get_admin_data(id)
+        # result = {
+        #     "status":200
+        # }
+        # return jsonify(result)
+        resp = auth.token_required(request.headers.get("Authorization"))
+        if resp["status"] != 200:
+            return err_resp(
+                resp["msg"],
+                resp["msg"],
+                resp["status"]
+            )
+        id = request.args.get("id")
+        return AdminService.get_admin_data(id)
 
     def post(self):
         resp = auth.token_required(request.headers.get("Authorization"))
