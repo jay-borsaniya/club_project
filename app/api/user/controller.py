@@ -16,7 +16,7 @@ admin = Namespace("user", description="Admin CRUD Operations.")
 @admin.route("/test")
 class Test(Resource):
     def get(self):
-        return render_template("dummy.html")
+        return render_template("dummy")
 
 @admin.route("/admin/")
 class Admin(Resource):
