@@ -1,5 +1,5 @@
 from flask_restx import Resource, Namespace, Api
-from flask import request
+from flask import request, render_template
 from flask import current_app as app
 from app.api.common import auth
 from app.utils import err_resp, validation_error
@@ -12,6 +12,11 @@ admin_auth_verify_schema = AuthVerifyAdminSchema()
 member_schema = MemberSchema()
 
 admin = Namespace("user", description="Admin CRUD Operations.")
+
+@admin.route("/test")
+class Test(Resource):
+    def get(self):
+        return render_template("dummy.html")
 
 @admin.route("/admin/")
 class Admin(Resource):
