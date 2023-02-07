@@ -8,7 +8,7 @@ MONGO_DB = 'exercise'
 def create_app():
     app = Flask(__name__)
 
-    register_extensions(app)
+    # register_extensions(app)
 
     client = MongoClient(MONGO_URI)
     app.db = client[str(MONGO_DB)]
